@@ -67,3 +67,30 @@
   第二次考虑了之前数据结构中遇到过的reverse方法，通过将整个数组头尾颠倒一次，再将后k个到最后一个、第一个到第k-1个分别倒置一次，就得到了想要的结果。关键在于reverse的编写也可以有不同的写法。比如可以startIndex++和endIndex--每次交换，我使用的就没有这么聪明，在循环里初始了一个i进行计数，最大是到(endIndex-startIndex)/2*（可以取到）*，然后每次startIndex+i，endIndex-i，两个索引指向的数进行交换。
   
   看了一下别人的solution，好像时间空间效率都差不多，所以这两种方法应该是够用了。
+  ------
+  
+- ### Single Number
+  (2020/09/13提交)
+  这道题需要从数组中找出唯一一个仅出现一次的数，除这个数以外均出现两次。要求时间控制在线性的范围内，并且尽量别使用额外的空间。
+  从讨论中找到了一个超级好的solution，记录一下：使用异或的原理
+  
+  - $a\bigoplus a=0 $
+  
+  - $a\bigoplus 0=a $
+  
+  - $a\bigoplus b \bigoplus a = (a\bigoplus a)\bigoplus b=0\bigoplus b=b$
+  
+  ```java
+  class Solution {
+    public int singleNumber(int[] nums) {
+      int a = 0;
+      for (int i : nums) {
+        a ^= i;
+      }
+      return a;
+    }
+  }
+  ```
+  
+  
+
