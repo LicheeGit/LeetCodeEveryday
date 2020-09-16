@@ -8,7 +8,7 @@
  */
 public class MoveZeroes {
     public static void main(String args[]){
-        int[] nums = {14,0,1,0,3,0,11,12,0,0,0};
+        int[] nums = {0,1,0,3,0,11,12,0,0};
         moveZeroes(nums);
         for (int num:nums){
             System.out.println(num);
@@ -19,13 +19,11 @@ public class MoveZeroes {
     public static void moveZeroes(int[] nums) {
         int count=0; // AKA: steps need to move forward.
         for(int i=0;i+count<nums.length;i++){
-            while (nums[i+count]==0){
+            while ((i+count)<nums.length&&nums[i+count]==0){
                 count++;
-                if((i+count)==nums.length){
-                    break;
-                }
             }
-            if(count!=0){
+            if((i+count)==nums.length) break;
+            if(count!=0&& nums[i+count]!=0){
                 nums[i]=nums[i+count];
             }
         }
